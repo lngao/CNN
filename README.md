@@ -1,4 +1,4 @@
-# CNN Committee for regression on NIST SD19 dataset#
+# CNN Committee for regression on NIST SD19 dataset #
 Research Oriented <br />
 University of Florida <br />
 
