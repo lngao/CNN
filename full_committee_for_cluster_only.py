@@ -162,8 +162,13 @@ class CNN(LoadData):
     def evaluate_network(self, test_data, test_labels):
         score = self.model.evaluate(test_data, test_labels)
         print('Accuracy :', score)
-        with open("Accuracy_log.txt", mode="w+") as file:
-            file.write("\n"+str(score[1]))
+        try:
+            with open("Accuracy_log.txt", mode="a") as file:
+                file.write("\n"+str(score[1]))
+        except PermissionError:
+            print(" Accuracy log write failed ! Use a different path or change permissions")
+        finally:
+            print(" Accuracy log updated !")
 
 # main()
 if __name__ == "__main__":
@@ -171,7 +176,7 @@ if __name__ == "__main__":
     all_classes = os.listdir(root)
     job_list = []
     for classes in all_classes:
-        p = Process(target=CNN, args=('C:\Training', classes, 100, "./output/" + classes))
+        p = Process(target=CNN, args=(root, classes, 100, "./output/" + classes))
         job_list.append(p)
         p.start()
     for jobs in job_list:
