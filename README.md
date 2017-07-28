@@ -6,3 +6,5 @@ Project Status  : Running <br />
 Project Timeline: 15th May 2017 to Present <br />
 Advisor         : Dr. Damon Woodard<br /> 
 Link            : http://fics-institute.org/ <br />
+
+External dependency: opencv-python, keras
