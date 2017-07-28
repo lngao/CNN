@@ -161,8 +161,13 @@ class CNN(LoadData):
     def evaluate_network(self, test_data, test_labels):
         score = self.model.evaluate(test_data, test_labels)
         print('Accuracy :', score)
-        with open("Accuracy_log.txt", mode="w+") as file:
-            file.write("\n"+score)
+        try:
+            with open("Accuracy_log.txt", mode="a") as file:
+                file.write("\n"+str(score[1]))
+        except PermissionError:
+            print(" Accuracy log write failed ! Use a different path or change permissions")
+        finally:
+            print(" Accuracy log updated !")
 
 # main()
 if __name__ == "__main__":
