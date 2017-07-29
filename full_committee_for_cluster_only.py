@@ -164,7 +164,7 @@ class CNN(LoadData):
         print('Accuracy :', score)
         try:
             with open("Accuracy_log.txt", mode="a") as file:
-                file.write("\n"+str(score[1]))
+                file.write("\n"+super().t_class+str(score[1]))
         except PermissionError:
             print(" Accuracy log write failed ! Use a different path or change permissions")
         finally:
@@ -174,10 +174,6 @@ class CNN(LoadData):
 if __name__ == "__main__":
     root = 'C:\Training'
     all_classes = os.listdir(root)
-    job_list = []
     for classes in all_classes:
-        p = Process(target=CNN, args=(root, classes, 100, "./output/" + classes))
-        job_list.append(p)
+        p = Process(target=CNN, args=(root , classes, "./output/" + classes, 100))
         p.start()
-    for jobs in job_list:
-        jobs.join()
