@@ -234,4 +234,5 @@ class CNN(LoadData):
 
 # main()
 if __name__ == "__main__":
-    CNN(parent_directory='C:\Training', true_class_name='A', epoch_count=100, output_folder="./output")
+    CNN(parent_directory='C:\Training', true_class_name='A', epoch_count=100, output_folder="./output",
+        augment_data_flag=True, augment_data_count=(500, 2000))
